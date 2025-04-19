@@ -1,0 +1,75 @@
+= Overview
+:author: Adrian Richter
+:version: 2.0.0
+
+A set of kotlin extensions
+
+== Things to do with Gradle
+* JavaDoc Generation
+
+https://github.com/Kotlin/dokka[Dokka Gradle Plugin]
+[source,groovy]
+[subs="attributes"]
+----
+plugins {
+  id("org.jetbrains.dokka") version "1.9.20"
+}
+----
+
+* Spotless
+
+https://github.com/diffplug/spotless/tree/main/plugin-gradle[Spotless]
+
+* GPG Generation
+
+https://docs.gradle.org/current/userguide/signing_plugin.html[Signing Gradle Plugin]
+
+[source,groovy]
+[subs="attributes"]
+----
+plugins {
+  id("signing")
+}
+----
+* Maven Repo Deployment
+
+
+
+* Git Flow Release
+
+https://github.com/RobWin/jgitflow-gradle-plugin[JGitFlow Gradle Plugin]
+
+[source,groovy]
+[subs="attributes"]
+----
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'io.github.robwin:jgitflow-gradle-plugin:{version}'
+    }
+}
+
+apply plugin: 'io.github.robwin.jgitflow'
+----
+
+* Version Update
+
+https://github.com/ben-manes/gradle-versions-plugin[Versions Gradle Plugin]
+
+* Enforcer Plugin
+
+https://github.com/kordamp/enforcer-gradle-plugin[Enforcer Gradle Plugin]
+
+* Source Jar Plugin
+
+* Code Coverage Report
+
+* Sonar Report
+* Dependency Check
+
+https://github.com/dependency-check/dependency-check-gradle[Dependency Check Plugin]
+
+* Update Dependency Report
