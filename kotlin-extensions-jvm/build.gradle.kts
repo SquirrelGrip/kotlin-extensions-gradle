@@ -29,13 +29,13 @@ tasks.compileKotlin {
     dependsOn(tasks.generateGrammarSource)
 }
 
-//tasks.dokkaJavadoc {
-//    dependsOn(tasks.generateGrammarSource)
-//}
-//
-//tasks.dokkaHtmlPartial {
-//    dependsOn(tasks.generateGrammarSource)
-//}
+tasks.dokkaGeneratePublicationJavadoc {
+    dependsOn(tasks.generateGrammarSource)
+}
+
+tasks.sourcesJar {
+    dependsOn(tasks.generateGrammarSource)
+}
 
 sourceSets {
     main {
