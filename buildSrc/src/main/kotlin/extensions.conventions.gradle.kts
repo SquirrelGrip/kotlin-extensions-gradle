@@ -85,9 +85,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git@github.com:SquirrelGrip/root.git"
-                    developerConnection = "scm:git:git@github.com:SquirrelGrip/root.git"
-                    url = "https://github.com/SquirrelGrip/root"
+                    connection = "scm:git:git@github.com:SquirrelGrip/kotlin-extensions-gradle.git"
+                    developerConnection = "scm:git:git@github.com:SquirrelGrip/kotlin-extensions-gradle.git"
+                    url = "https://github.com/SquirrelGrip/kotlin-extensions-gradle"
                 }
             }
         }
@@ -96,10 +96,9 @@ publishing {
 
 artifacts {
     add("archives", tasks.named("javadocJar"))
+    add("archives", tasks.named("sourcesJar"))
 }
 
-//ext["signing.gnupg.useLegacyGpg"]=true
-//ext["signing.gnupg.optionsFile"]=gnupg-home/gpg.conf
 ext["signing.gnupg.executable"]="gpg"
 ext["signing.gnupg.homeDir"]="/Users/adrian/.gnupg"
 ext["signing.gnupg.keyName"]=System.getenv("GPG_KEYNAME")

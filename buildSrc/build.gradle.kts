@@ -4,7 +4,6 @@ plugins {
 }
 
 repositories {
-    google()
     mavenCentral()
     gradlePluginPortal()
 }
@@ -12,4 +11,5 @@ repositories {
 dependencies {
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:2.0.0")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20")
+    implementation("io.github.robwin:jgitflow-gradle-plugin:0.6.0")
 }
