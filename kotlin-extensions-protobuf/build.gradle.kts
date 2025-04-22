@@ -7,9 +7,11 @@ dependencies {
     implementation(project(":kotlin-extensions-jvm"))
 
     implementation(platform(libs.jackson.bom))
-
     implementation(libs.jackson.dataformat.protobuf)
 
     testImplementation(libs.assertj.core)
     testImplementation(libs.junit.jupiter)
+    testImplementation(libs.junit.platform.launcher)
+
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }

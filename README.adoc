@@ -4,7 +4,6 @@
 
 A set of kotlin extensions
 
-== Things to do with Gradle
 * JavaDoc Generation
 
 https://github.com/Kotlin/dokka[Dokka Gradle Plugin]
@@ -12,14 +11,16 @@ https://github.com/Kotlin/dokka[Dokka Gradle Plugin]
 [subs="attributes"]
 ----
 plugins {
-  id("org.jetbrains.dokka") version "2.0.0"
   id("org.jetbrains.dokka-javadoc") version "2.0.0"
 }
+
+tasks.register<Jar>("javadocJar") {
+    archiveClassifier.set("javadoc")
+    destinationDirectory.set(layout.buildDirectory.dir("libs"))
+    from(layout.buildDirectory.dir("dokka/javadoc"))
+    dependsOn("dokkaGeneratePublicationJavadoc")
+}
 ----
-
-* Spotless
-
-https://github.com/diffplug/spotless/tree/main/plugin-gradle[Spotless]
 
 * GPG Generation
 
@@ -31,30 +32,37 @@ https://docs.gradle.org/current/userguide/signing_plugin.html[Signing Gradle Plu
 plugins {
   id("signing")
 }
+
+ext["signing.gnupg.executable"]="gpg"
+ext["signing.gnupg.homeDir"]="/Users/adrian/.gnupg"
+ext["signing.gnupg.keyName"]=System.getenv("GPG_KEYNAME")
+ext["signing.gnupg.passphrase"]=System.getenv("GPG_PASSPHRASE")
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
+}
 ----
-* Maven Repo Deployment
 
-
-
-* Git Flow Release
+* Git Flow Plugin
 
 https://github.com/RobWin/jgitflow-gradle-plugin[JGitFlow Gradle Plugin]
 
 [source,groovy]
 [subs="attributes"]
 ----
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'io.github.robwin:jgitflow-gradle-plugin:{version}'
-    }
+plugins {
+    id("io.github.robwin.jgitflow")
 }
-
-apply plugin: 'io.github.robwin.jgitflow'
 ----
+
+== Things to do with Gradle
+
+* Spotless
+
+https://github.com/diffplug/spotless/tree/main/plugin-gradle[Spotless]
+
+* Maven Repo Deployment
 
 * Version Update
 

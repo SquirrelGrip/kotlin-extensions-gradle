@@ -4,6 +4,7 @@ plugins {
     `version-catalog`
     id("signing")
     `maven-publish`
+    id("se.bjurr.gradle.update-versions")
 }
 
 repositories {
@@ -99,10 +100,11 @@ artifacts {
     add("archives", tasks.named("sourcesJar"))
 }
 
-ext["signing.gnupg.executable"]="gpg"
-ext["signing.gnupg.homeDir"]="/Users/adrian/.gnupg"
+//ext["signing.gnupg.homeDir"]="${System.getenv("HOME")}/.gnupg"
 ext["signing.gnupg.keyName"]=System.getenv("GPG_KEYNAME")
 ext["signing.gnupg.passphrase"]=System.getenv("GPG_PASSPHRASE")
+ext["ossrhUsername"]=System.getenv("OSSRH_TOKEN_NAME")
+ext["ossrhPassword"]=System.getenv("OSSRH_TOKEN_PASSWORD")
 
 signing {
     useGpgCmd()
