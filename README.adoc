@@ -64,10 +64,7 @@ https://github.com/ben-manes/gradle-versions-plugin[Versions Gradle Plugin]
 
 https://github.com/kordamp/enforcer-gradle-plugin[Enforcer Gradle Plugin]
 
-* Source Jar Plugin
-
 * Code Coverage Report
-
 * Sonar Report
 * Dependency Check
 
